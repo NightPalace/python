@@ -1,0 +1,20 @@
+{% extends 'learning_logs/base.html' %}
+{% load bootstrap3 %}
+{% block header %}
+<h2>学习主题: {{topic}}</h2>
+{% endblock header %}
+{% block content %}
+	<h4><a href="{% url 'learning_logs:new_entry' topic.id%}">添加新的条目</a></h4>
+	{% for e in entries %}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>{{e.date_added}}<small><a href="{% url 'learning_logs:edit_entry' e.id %}">修改</a></small></h3>
+			</div>
+			<div class="panel-body">
+				{{e.text|linebreaks}}
+			</div>
+		</div>
+	{% empty %}
+		<h4>还没有任务呦，快来添加吧～</h4>
+	{% endfor %}
+{% endblock content %}
