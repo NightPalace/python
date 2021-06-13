@@ -1,0 +1,1 @@
+该文件确保了 learning_log/static/ 将会被加入项目中
